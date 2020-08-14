@@ -26,5 +26,12 @@ stage('Deploy to Tomcat server')
         sh "scp -o StrictHostKeyChecking=no target/maven-web-application.war ec2-user@13.127.100.233:/opt/tomcat9/webapps"
     }
 }
+    stage('Email notification')
+    {
+        emailext attachLog: true, body: '''$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+
+Check console output at $BUILD_URL to view the results.
+''', compressLog: true, subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: 'somesh.1696@gmail.com'
+    }
 
 }
