@@ -2,7 +2,7 @@ node{
     def mavenHome= tool name: "Maven 3.6.3"
     properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')),
     pipelineTriggers([pollSCM(ignorePostCommitHooks: true, scmpoll_spec: '* * * * *')])])
-stage('Checkout File from SCM')
+stage('Checkout File from SCM ')
 {
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
 userRemoteConfigs: [[credentialsId: 'c897140a-285c-4017-a50e-8265887e47a8', url: 'https://github.com/World-123/maven-web-application.git']]])
