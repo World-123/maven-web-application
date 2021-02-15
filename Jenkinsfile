@@ -7,7 +7,7 @@ stage('Checkout File from SCM ')
     checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
 userRemoteConfigs: [[credentialsId: 'c897140a-285c-4017-a50e-8265887e47a8', url: 'https://github.com/World-123/maven-web-application.git']]])
 }
-stage ('Build the code')
+stage ('Build the  code')
 {
     sh "${mavenHome}/bin/mvn clean package"
 }
